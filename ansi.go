@@ -8,6 +8,7 @@ import (
 const ESC = "\033"
 
 // Text Styling
+// Ex: fmt.Println(ansi.Underline, "Underlined text")
 const (
 	Reset      = ESC + "[0m"
 	Bold       = ESC + "[1m"
@@ -20,6 +21,7 @@ const (
 )
 
 // Text Color
+// Ex: fmt.Println(ansi.Blue, "Blue text")
 const (
 	Black   = ESC + "[30m"
 	Red     = ESC + "[31m"
@@ -40,15 +42,20 @@ const (
 	BrightWhite   = ESC + "[97m"
 )
 
+// 256 Text Color
+// Ex: fmt.Println(ansi.Fg256(27), "Blue text")
 func Fg256(color uint8) string {
 	return ESC + "[38;5;" + strconv.FormatUint(uint64(color), 10) + "m"
 }
 
+// RGB Text Color
+// Ex: fmt.Println(ansi.FgRgb(30, 30, 255), "Blue text")
 func FgRgb(red, green, blue uint8) string {
 	return ESC + "[38;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
 }
 
 // Background Color
+// Ex: fmt.Println(ansi.BgBlue, "Text with a blue background")
 const (
 	BgBlack   = ESC + "[40m"
 	BgRed     = ESC + "[41m"
@@ -69,75 +76,125 @@ const (
 	BgBrightWhite   = ESC + "[107m"
 )
 
+// 256 Background Color
+// Ex: fmt.Println(ansi.Bg256(27), "Text with a blue background")
 func BgRgb(red, green, blue uint8) string {
 	return ESC + "[48;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
 }
 
+// RGB Background Color
+// Ex: fmt.Println(ansi.BgRgb(30, 30, 255), "Text with a blue background")
 func Bg256(color uint8) string {
 	return ESC + "[48;5;" + strconv.FormatUint(uint64(color), 10) + "m"
 }
 
-// Cursor Movement
+//// Cursor Movement
 
+// Move cursor to {col}, {line}
+// Ex: ansi.CursorMove(10,20)
 func CursorMove(col, line int) {
 	fmt.Print(ESC+"[", line, ";", col, "H")
 }
 
+// Move cursor {line} up
+// Ex: ansi.CursorUp(10)
 func CursorUp(line int) {
 	fmt.Print(ESC+"[", line, "A")
 }
 
+// Move cursor {line} down
+// Ex: ansi.CursorDown(10)
 func CursorDown(line int) {
 	fmt.Print(ESC+"[", line, "B")
 }
 
+// Move cursor {col} right
+// Ex: ansi.CursorRight(10)
 func CursorRight(col int) {
 	fmt.Print(ESC+"[", col, "C")
 }
 
+// Move cursor {col} left
+// Ex: ansi.CursorLeft(10)
 func CursorLeft(col int) {
 	fmt.Print(ESC+"[", col, "D")
 }
 
+// Move cursor to {col}
+// Ex: ansi.CursorCol(10)
 func CursorCol(col int) {
 	fmt.Print(ESC+"[", col, "G")
 }
 
+// Move cursor to Home (0,0)
+// Ex: ansi.CursorHome()
 func CursorHome() {
 	fmt.Print(ESC + "[H")
 }
 
+// Save cursor position
 func CursorSave() {
 	fmt.Print(ESC + "[s")
 }
 
+// Restore cursor position
 func CursorRestore() {
 	fmt.Print(ESC + "[u")
 }
 
+// Make cursor invisible
 func CursorInvisible() {
 	fmt.Print(ESC + "[?25l")
 }
 
+// Make cursor visible
 func CursorVisible() {
 	fmt.Print(ESC + "[?25h")
 }
 
+// Save the screen
 func ScreenSave() {
 	fmt.Print(ESC + "[?47h")
 }
 
+// Restore the screen
 func ScreenRestore() {
 	fmt.Print(ESC + "[?47l")
 }
 
-// Clear
-const (
-	ClearScreen     = ESC + "[2J"
-	ClearScreenUp   = ESC + "[1J"
-	ClearScreenDown = ESC + "[0J"
-	ClearScreenEnd  = ESC + "[J"
-	ClearLineStart  = ESC + "[1K"
-	ClearLineEnd    = ESC + "[K"
-	ClearLine       = ESC + "[2K"
-)
+//// Clear/Erase
+
+// Clear the full screen
+func ClearScreen() {
+	fmt.Print(ESC + "[2J")
+}
+
+// Clear screen up
+func ClearScreenUp() {
+	fmt.Print(ESC + "[1J")
+}
+
+// Clear screen down
+func ClearScreenDown() {
+	fmt.Print(ESC + "[0J")
+}
+
+// Clear screen to the end
+func ClearScreenEnd() {
+	fmt.Print(ESC + "[J")
+}
+
+// Clear the entire line
+func ClearLine() {
+	fmt.Print(ESC + "[2K")
+}
+
+// Clear start of line to the cursor
+func ClearLineStart() {
+	fmt.Print(ESC + "[1K")
+}
+
+// Clear from cursor to end of line
+func ClearLineEnd() {
+	fmt.Print(ESC + "[K")
+}
