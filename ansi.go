@@ -8,7 +8,7 @@ import (
 const ESC = "\033"
 
 // Text Styling
-// Ex: fmt.Println(ansi.Underline, "Underlined text")
+// Ex: fmt.Println(ansi.Underline+ "Underlined text")
 const (
 	Reset      = ESC + "[0m"
 	Bold       = ESC + "[1m"
@@ -21,7 +21,7 @@ const (
 )
 
 // Text Color
-// Ex: fmt.Println(ansi.Blue, "Blue text")
+// Ex: fmt.Println(ansi.Blue+ "Blue text")
 const (
 	Black   = ESC + "[30m"
 	Red     = ESC + "[31m"
@@ -43,19 +43,19 @@ const (
 )
 
 // 256 Text Color
-// Ex: fmt.Println(ansi.Fg256(27), "Blue text")
+// Ex: fmt.Println(ansi.Fg256(27)+ "Blue text")
 func Fg256(color uint8) string {
 	return ESC + "[38;5;" + strconv.FormatUint(uint64(color), 10) + "m"
 }
 
 // RGB Text Color
-// Ex: fmt.Println(ansi.FgRgb(30, 30, 255), "Blue text")
+// Ex: fmt.Println(ansi.FgRgb(30, 30, 255)+ "Blue text")
 func FgRgb(red, green, blue uint8) string {
 	return ESC + "[38;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
 }
 
 // Background Color
-// Ex: fmt.Println(ansi.BgBlue, "Text with a blue background")
+// Ex: fmt.Println(ansi.BgBlue+ "Text with a blue background")
 const (
 	BgBlack   = ESC + "[40m"
 	BgRed     = ESC + "[41m"
@@ -77,13 +77,13 @@ const (
 )
 
 // 256 Background Color
-// Ex: fmt.Println(ansi.Bg256(27), "Text with a blue background")
+// Ex: fmt.Println(ansi.Bg256(27)+ "Text with a blue background")
 func BgRgb(red, green, blue uint8) string {
 	return ESC + "[48;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
 }
 
 // RGB Background Color
-// Ex: fmt.Println(ansi.BgRgb(30, 30, 255), "Text with a blue background")
+// Ex: fmt.Println(ansi.BgRgb(30, 30, 255)+ "Text with a blue background")
 func Bg256(color uint8) string {
 	return ESC + "[48;5;" + strconv.FormatUint(uint64(color), 10) + "m"
 }
