@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/cloudyhadi/ansi"
+	"github.com/anotherhadi/ansi"
 )
 
 func HelloJohn() {
