@@ -1,5 +1,5 @@
 <p align="center">
-<img width="60%" src="https://cdn.nostr.build/i/2c5ce0ee4f2a63742d357ff060a21dd1896e9fcdc85a1784ed7d22706330a94e.png" />
+  <img width="60%" src="https://cdn.nostr.build/i/2c5ce0ee4f2a63742d357ff060a21dd1896e9fcdc85a1784ed7d22706330a94e.png" />
 </p>
 
 # ANSI
@@ -29,22 +29,22 @@ go get -u github.com/anotherhadi/ansi@latest
 ### Importing:
 ```go
 import (
-    "fmt"
-    "github.com/anotherhadi/ansi"
+  "fmt"
+  "github.com/anotherhadi/ansi"
 )
 ```
 
 ### Basic Usage:
 ```go
- func HelloJohn() {
-	var name string = "John"
-	ansi.ClearScreen()
-	ansi.CursorHome()
-	fmt.Println(ansi.White + "Your name is " + ansi.Blue + name)
-	fmt.Println(ansi.White + "Your name is " + ansi.BrightRed + name)
-	fmt.Println(ansi.White + "Your name is " + ansi.BgWhite + ansi.Black + name)
+func HelloJohn() {
+  var name string = "John"
+  ansi.ClearScreen()
+  ansi.CursorHome()
+  fmt.Println(ansi.White + "Your name is " + ansi.Blue + name)
+  fmt.Println(ansi.White + "Your name is " + ansi.BrightRed + name)
+  fmt.Println(ansi.White + "Your name is " + ansi.BgWhite + ansi.Black + name)
 
-	fmt.Println(ansi.Reset + "Your name is " + ansi.FgRgb(100, 200, 200) + name)
+  fmt.Println(ansi.Reset + "Your name is " + ansi.FgRgb(100, 200, 200) + name)
 }
 ```
 Example available in "test/test.go"
