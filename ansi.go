@@ -1,3 +1,4 @@
+// https://github.com/anotherhadi/ansi
 package ansi
 
 import (
