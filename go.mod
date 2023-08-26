@@ -1,3 +1,3 @@
-module github.com/cloudyhadi/ansi
+module github.com/anotherhadi/ansi
 
 go 1.20
