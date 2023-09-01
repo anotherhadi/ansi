@@ -91,9 +91,9 @@ func Bg256(color uint8) string {
 
 //// Cursor Movement
 
-// Move cursor to {col}, {line}
+// Move cursor to {line}, {col}
 // Ex: ansi.CursorMove(10,20)
-func CursorMove(col, line int) {
+func CursorMove(line, col int) {
 	fmt.Print(ESC+"[", line, ";", col, "H")
 }
 
