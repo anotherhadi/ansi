@@ -79,14 +79,14 @@ const (
 
 // 256 Background Color
 // Ex: fmt.Println(ansi.Bg256(27)+ "Text with a blue background")
-func BgRgb(red, green, blue uint8) string {
-	return ESC + "[48;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
+func Bg256(color uint8) string {
+	return ESC + "[48;5;" + strconv.FormatUint(uint64(color), 10) + "m"
 }
 
 // RGB Background Color
 // Ex: fmt.Println(ansi.BgRgb(30, 30, 255)+ "Text with a blue background")
-func Bg256(color uint8) string {
-	return ESC + "[48;5;" + strconv.FormatUint(uint64(color), 10) + "m"
+func BgRgb(red, green, blue uint8) string {
+	return ESC + "[48;2;" + strconv.FormatUint(uint64(red), 10) + ";" + strconv.FormatUint(uint64(green), 10) + ";" + strconv.FormatUint(uint64(blue), 10) + "m"
 }
 
 //// Cursor Movement
